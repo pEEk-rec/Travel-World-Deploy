@@ -18,7 +18,7 @@ const coreOptions = {
   credentials: true,
 }
 
-// database coonection
+// database connection
 mongoose.set("strictQuery", false)
 
 // for testing
@@ -47,13 +47,14 @@ const connect = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
-
+    console.log("MongoDB database connected")
+    
     app.listen(port, () => {
-      connect()
       console.log("server listening on port", port)
     })
-    console.log("MongoDB database connected")
   } catch (err) {
-    console.log("MongoDb database connection failed")
+    console.log("MongoDB database connection failed", err)
   }
 }
+
+connect()
